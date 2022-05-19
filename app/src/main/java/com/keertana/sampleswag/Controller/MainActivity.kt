@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.keertana.sampleswag.Adapters.CategoryRecycleAdapter
 import com.keertana.sampleswag.R
 import com.keertana.sampleswag.Services.DataService
+import com.keertana.sampleswag.Utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter= CategoryRecycleAdapter(this,DataService.categories) { category ->
             val productIntent=Intent(this,ProductActivity::class.java)
+            productIntent.putExtra(EXTRA_CATEGORY,category.title)
             startActivity(productIntent)
         }
         categoryListView.adapter= adapter
